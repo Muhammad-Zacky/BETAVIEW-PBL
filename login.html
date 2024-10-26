@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <title>Login - Kuesioner Pembelajaran</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css"/>
+  <link href="css/style.css" rel="stylesheet"/>
+  <link href="css/responsive.css" rel="stylesheet"/>
+</head>
+
+<body>
+  <div class="login_section d-flex align-items-center justify-content-center vh-100">
+    <div class="login_container p-4 border rounded" style="width: 100%; max-width: 400px;">
+      <h2 class="text-center mb-4">Login</h2>
+      
+      <!-- Form Login -->
+      <form id="loginForm">
+        <!-- Input Username -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" placeholder="Masukan username" required/>
+        </div>
+        
+        <!-- Input Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Masukkan password" required/>
+        </div>
+        
+        <!-- Dropdown Pilihan Role -->
+        <div class="form-group">
+          <label for="roleSelect">Login sebagai</label>
+          <select class="form-control" id="roleSelect" required>
+            <option value="" disabled selected>Pilih Role</option>
+            <option value="pimpinan.html">Pimpinan</option>
+            <option value="ppmpp.html">PPMPP</option>
+            <option value="tendik.html">Tendik</option>
+            <option value="dosen.html">Dosen</option>
+            <option value="mahasiswa.html">Mahasiswa</option>
+          </select>
+        </div>
+        
+        <!-- Button Login -->
+        <button type="button" onclick="navigateToRole()" class="btn btn-primary btn-block">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script to Redirect Based on Role and Validate Inputs -->
+  <script>
+    function navigateToRole() {
+      const selectedRole = document.getElementById('roleSelect').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Validasi input
+      if (!username || !password) {
+        alert('Silakan masukkan username dan password');
+      } else if (!selectedRole) {
+        alert('Silakan pilih role Anda');
+      } else {
+        // Redirect ke halaman yang sesuai dengan role yang dipilih
+        window.location.href = selectedRole;
+      }
+    }
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+</body>
+</html>
